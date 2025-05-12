@@ -4,32 +4,54 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  const end = new Date("06/05/2025 12:00:01 AM")
+  const now = new Date()
+  const distance = end - now
+
+  const second = 1000
+  const minute = second * 60
+  const hour = minute * 60
+  const day = hour * 24
+
+  function getRemainingDays(){
+    const remainingDays = Math.floor(distance/day)
+  return remainingDays
+  }
+
+  function getRemainingHours(){
+    const remainingHours = Math.floor((distance%day)/hour)
+  return remainingHours
+  }
+
+  function getRemainingMinutes(){
+    const remainingMinutes = Math.floor((distance%hour)/minute)
+  return remainingMinutes
+  }
+
+  function getRemainingSeconds(){
+    const remainingSeconds = Math.floor((distance%minute)/second)
+  return remainingSeconds
+  }
+
+  if(distance>=0){
+    return (
+      <>
+        <div>
+          {`Remaining time until Switch 2 release: ${getRemainingDays()} days, ${getRemainingHours()} hours, ${getRemainingMinutes()} minutes, ${getRemainingSeconds()} seconds`}
+        </div>
+      </>
+    )
+  }
+  else{
+    return (
+      <>
+        <div>
+          {`The switch 2 has been released for ${-1* getRemainingDays()} days, ${-1* getRemainingHours()} hours, ${-1* getRemainingMinutes()} minutes, ${-1* getRemainingSeconds()} seconds`}
+        </div>
+      </>
+    )
+  }
 }
 
 export default App
