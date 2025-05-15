@@ -1,12 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect} from 'react'
 import './App.css'
 
 function App() {
 
   const end = new Date("06/05/2025 12:00:01 AM")
   const now = new Date()
+
+  useEffect(()=>{
+    console.log("Testing")
+  },[now])
+
   const distance = end - now
 
   const second = 1000
@@ -33,7 +36,6 @@ function App() {
     const remainingSeconds = Math.floor((distance%minute)/second)
   return remainingSeconds
   }
-
   if(distance>=0){
     return (
       <>
@@ -43,7 +45,7 @@ function App() {
       </>
     )
   }
-  else{
+  else{     
     return (
       <>
         <div>
