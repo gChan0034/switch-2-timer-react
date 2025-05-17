@@ -1,14 +1,21 @@
-import { useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import './App.css'
 
 function App() {
 
   const end = new Date("06/05/2025 12:00:01 AM")
-  const now = new Date()
+
+  const [now, setNow] = useState(new Date())
 
   useEffect(()=>{
-    console.log("Testing")
-  },[now])
+    function timer(){
+      setNow(new Date())
+    }
+    const id = setInterval(timer, second)
+    return function(){
+      console.log("Test")
+      clearInterval(id)}
+  },[])
 
   const distance = end - now
 
