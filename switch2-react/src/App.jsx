@@ -17,8 +17,7 @@ function App() {
       clearInterval(id)}
   },[])
 
-  const distance = end - now
-
+  const distance = Math.abs(end - now)
   const second = 1000
   const minute = second * 60
   const hour = minute * 60
@@ -47,7 +46,9 @@ function App() {
     return (
       <>
         <div>
-          {`Remaining time until Switch 2 release: ${getRemainingDays()} days, ${getRemainingHours()} hours, ${getRemainingMinutes()} minutes, ${getRemainingSeconds()} seconds`}
+          {`Remaining time until Switch 2 release:`}
+          <br />
+          {`${getRemainingDays()} days, ${getRemainingHours()} hours, ${getRemainingMinutes()} minutes, ${getRemainingSeconds()} seconds`}
         </div>
       </>
     )
@@ -56,7 +57,9 @@ function App() {
     return (
       <>
         <div>
-          {`The switch 2 has been released for ${-1* getRemainingDays()} days, ${-1* getRemainingHours()} hours, ${-1* getRemainingMinutes()} minutes, ${-1* getRemainingSeconds()} seconds`}
+          {`The switch 2 has been released for`}
+          <br />
+          {`${getRemainingDays()} days, ${getRemainingHours()} hours, ${getRemainingMinutes()} minutes, ${getRemainingSeconds()} seconds`}
         </div>
       </>
     )
